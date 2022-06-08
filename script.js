@@ -1,13 +1,23 @@
+// imports
 import { pages } from './pages.js'
+import { Menu } from './components.js'
+// end imports
 
+// init components
+customElements.define('dw-menu', Menu)
+// end init components
+
+// vars
 const app = document.getElementById('app')
+// end vars
 
+// dom manipulation
 const clearPage = () => {
     while (app.firstChild) {
         app.removeChild(app.firstChild)
     }
 }
-const buildLayout = (layout) => {
+const buildLayout = layout => {
     if (layout === "default") {
         let wrapper = document.createElement('div')
         wrapper.className = 'wrapper'
@@ -18,10 +28,12 @@ const buildLayout = (layout) => {
 const addContent = (type, content) => {
     let wrapper = document.querySelector('.wrapper')
     if (type === '1col') {
-        let container = document.createElement('div')
-        container.className = 'container'
-        wrapper.appendChild(container)
-        container.textContent = content.body
+        // let container = document.createElement('div')
+        // container.className = 'container'
+        // wrapper.appendChild(container)
+        // container.textContent = content.body
+        let menu = document.createElement('dw-menu')
+        wrapper.appendChild(menu)
     }
     if (type === '2col') {
         let left = document.createElement('div')
@@ -42,5 +54,7 @@ const render = pageToDisplay => {
     addContent(targetPage[0].type, targetPage[0].content)
     console.log('render ran')
 }
+// end dom manipulation
 
+// init page
 render('home')
