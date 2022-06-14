@@ -1,6 +1,6 @@
 const pages = [
     {
-        page: "home",
+        page: "dashboard",
         layout: "default",
         type: "1col",
         content: {

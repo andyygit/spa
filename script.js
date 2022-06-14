@@ -13,8 +13,8 @@ const app = document.getElementById('app')
 
 // dom manipulation
 const clearPage = () => {
-    while (app.firstChild) {
-        app.removeChild(app.firstChild)
+    while (app.lastChild) {
+        app.removeChild(app.lastChild)
     }
 }
 const buildLayout = layout => {
@@ -29,19 +29,26 @@ const buildLayout = layout => {
 const addContent = (type, content) => {
     let wrapper = document.querySelector('.wrapper')
     if (type === '1col') {
+        let container = document.createElement('div')
+        container.className = 'container'
+        wrapper.appendChild(container)
         let row = document.createElement('div')
         row.className = 'row'
-        wrapper.appendChild(row)
+        container.appendChild(row)
         row.appendChild(document.createElement('dw-hero'))
+        row.textContent = content.body
     }
     if (type === '2col') {
+        let container = document.createElement('div')
+        container.className = 'container d-flex'
+        wrapper.appendChild(container)
         let left = document.createElement('div')
         left.className = 'col2'
-        wrapper.appendChild(left)
+        container.appendChild(left)
         left.textContent = content.left.body
         let right = document.createElement('div')
         right.className = 'col2'
-        wrapper.appendChild(right)
+        container.appendChild(right)
         right.textContent = content.right.body
     }
     // console.log('addContent ran')
@@ -56,4 +63,4 @@ const render = pageToDisplay => {
 // end dom manipulation
 
 // init page
-render('home')
+render('dashboard')

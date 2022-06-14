@@ -14,7 +14,7 @@ class Menu extends HTMLElement {
     }
     getActionItems() {
         let filteredItem = this.menuItems.filter(item => item.title === 'Inventar')
-        return filteredItem.map(item => `<a href="#">${item.actions}</a>`)
+        return filteredItem[0].actions.map(item => `<a href="#">${item}</a>`)
     }
     generateActions() {
         let actionItems = this.getActionItems()
