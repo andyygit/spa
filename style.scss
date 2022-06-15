@@ -89,8 +89,10 @@ a {
     @extend %navbarTpl;
     background-color: $col-main-black;
     color: $col-white;
-    a {
+    a, p {
         padding: 5px 10px;
+    }
+    a {
         &:hover {
             background-color: lighten($col-main-black, 9%)
         }

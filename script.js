@@ -1,6 +1,6 @@
 // imports
-import { pages } from './pages.js'
 import { Menu } from './components.js'
+import { pages } from './pages.js'
 // end imports
 
 // init components
@@ -35,7 +35,6 @@ const addContent = (type, content) => {
         let row = document.createElement('div')
         row.className = 'row'
         container.appendChild(row)
-        row.appendChild(document.createElement('dw-hero'))
         row.textContent = content.body
     }
     if (type === '2col') {
@@ -62,5 +61,28 @@ const render = pageToDisplay => {
 }
 // end dom manipulation
 
+// attach listeners
+const actionListeners = () => {
+    let renderedMenuItems = Array.from(document.querySelector('#navigation').children)
+    renderedMenuItems.forEach(item => {
+        item.addEventListener('click', e => {
+            Array.from(e.target.parentElement.children).forEach(i => {
+                if (i.classList.contains('active')) i.classList.remove('active')
+            })
+            e.target.classList.add('active')
+            let actionsParent = pages.filter(item => item.menuitems.title === e.target.textContent)
+            let actionsToDisplay = actionsParent[0].menuitems.actions ? actionsParent[0].menuitems.actions : '<p>--------------</p>'
+            if (Array.isArray(actionsToDisplay)) {
+                let outputActions = actionsToDisplay.map(item => `<a href="#">${item}</a>`)
+                document.querySelector('#actions').innerHTML = ''.concat(...outputActions)
+            } else {
+                document.querySelector('#actions').innerHTML = actionsToDisplay
+            }
+        })
+    })
+}
+// end attach listeners
+
 // init page
 render('dashboard')
+actionListeners()
