@@ -21,7 +21,7 @@ class Menu extends HTMLElement {
                             </div>
                             <div class="actionbar">
                                 <div class="container">
-                                    <nav id="actions"><p>--------------</p></nav>
+                                    <nav id="actions"><p></p></nav>
                                 </div>
                             </div>
                         `

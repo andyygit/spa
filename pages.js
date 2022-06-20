@@ -4,7 +4,6 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Dashboard',
-            accesslevel: 0
         },
         type: '1col',
         content: {
@@ -16,8 +15,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Infrastructură',
-            accesslevel: 0,
-            actions: ['Depozite', 'Subcontractori', 'Utilizatori', 'Știri', 'Requests for change']
+            actions: [['Depozite', 'rapoarte'], ['Subcontractori', 'infraSubc'], ['Utilizatori', 'infraUtiliz'], ['Știri', 'infraStiri'], ['Requests for change', 'infraReq']]
         },
         type: '1col',
         content: {
@@ -29,8 +27,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Inventar',
-            accesslevel: 0,
-            actions: ['Scannere', 'Imprimante mobile', 'Echipamente birou', 'Service']
+            actions: [['Scannere', 'invScannere'], ['Imprimante mobile', 'invPrintere'], ['Echipamente birou', 'invEchipamente'], ['Service', 'invService']]
         },
         type: '2col',
         content: {
@@ -47,8 +44,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Solicitări',
-            accesslevel: 0,
-            actions: ['Echipamente', 'Consumabile']
+            actions: [['Echipamente', 'solicEchip'], ['Consumabile', 'solicCons']]
         },
         type: '1col',
         content: {
@@ -60,8 +56,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Căutare',
-            accesslevel: 0,
-            actions: ['Scanner', 'Imprimantă mobilă']
+            actions: [['Scanner', 'cautScanner'], ['Imprimantă mobilă', 'cautPrinter']]
         },
         type: '1col',
         content: {
@@ -73,8 +68,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Penalizări',
-            accesslevel: 0,
-            actions: ['Adăugare', 'Căutare', 'Export']
+            actions: [['Adăugare', 'penAdaug'], ['Căutare', 'penCaut'], ['Export', 'penExport']]
         },
         type: '1col',
         content: {
@@ -86,8 +80,7 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Rapoarte',
-            accesslevel: 0,
-            actions: ['Raport de dimineață', 'Raport de seară', 'Verificări rapoarte']
+            actions: [['Raport de dimineață', 'rapDimineata'], ['Raport de seară', 'dapSeara'], ['Verificări rapoarte', 'rapVerif']]
         },
         type: '1col',
         content: {
@@ -99,7 +92,6 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Suport',
-            accesslevel: 0,
         },
         type: '1col',
         content: {
@@ -111,7 +103,6 @@ const pages = [
         layout: 'default',
         menuitems: {
             title: 'Documentații',
-            accesslevel: 0,
         },
         type: '1col',
         content: {

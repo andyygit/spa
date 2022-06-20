@@ -71,9 +71,9 @@ const actionListeners = () => {
             })
             e.target.classList.add('active')
             let actionsParent = pages.filter(item => item.menuitems.title === e.target.textContent)
-            let actionsToDisplay = actionsParent[0].menuitems.actions ? actionsParent[0].menuitems.actions : '<p>--------------</p>'
+            let actionsToDisplay = actionsParent[0].menuitems.actions ? actionsParent[0].menuitems.actions : '<p></p>'
             if (Array.isArray(actionsToDisplay)) {
-                let outputActions = actionsToDisplay.map(item => `<a href="#">${item}</a>`)
+                let outputActions = actionsToDisplay.map(item => `<a href="#">${item[0]}</a>`)
                 document.querySelector('#actions').innerHTML = ''.concat(...outputActions)
             } else {
                 document.querySelector('#actions').innerHTML = actionsToDisplay
@@ -84,5 +84,5 @@ const actionListeners = () => {
 // end attach listeners
 
 // init page
-render('dashboard')
+render('inventar')
 actionListeners()
