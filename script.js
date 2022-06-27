@@ -1,88 +1,68 @@
-// imports
-import { Menu } from './components.js'
+import { Navbar, Actionbar } from './components.js'
 import { pages } from './pages.js'
-// end imports
 
-// init components
-customElements.define('dw-menu', Menu)
-// end init components
+customElements.define('dw-navbar', Navbar)
+customElements.define('dw-actionbar', Actionbar)
 
-// vars
 const app = document.getElementById('app')
-// end vars
 
-// dom manipulation
 const clearPage = () => {
     while (app.lastChild) {
         app.removeChild(app.lastChild)
     }
 }
-const buildLayout = layout => {
-    app.appendChild(document.createElement('dw-menu'))
-    if (layout === "default") {
-        let wrapper = document.createElement('div')
-        wrapper.className = 'wrapper'
-        // console.log('buildLayout ran')
-        return app.appendChild(wrapper)
-    }
+
+const buildLayout = page => {
+    let menu = document.createElement('dw-navbar')
+    menu.setAttribute('activelink', page.menuitems.title)
+    app.appendChild(menu)
+    // let menuItems = document.querySelector('#navigation').children
+    // Array.from(menuItems).forEach(item => {
+    //     if (item.classList.contains('active')) {
+    //         item.classList.remove('active')
+    //     }
+    //     if (item.textContent == page.menuitems.title) {
+    //         item.classList.add('active')
+    //     }
+    // })
+    let actionbar = document.createElement('dw-actionbar')
+    app.appendChild(actionbar)
+    let wrapper = document.createElement('div')
+    wrapper.className = 'wrapper'
+    return app.appendChild(wrapper)
 }
-const addContent = (type, content) => {
+
+const addContent = (layout, content) => {
     let wrapper = document.querySelector('.wrapper')
-    if (type === '1col') {
+    if (layout == '1col') {
         let container = document.createElement('div')
         container.className = 'container'
         wrapper.appendChild(container)
         let row = document.createElement('div')
         row.className = 'row'
-        container.appendChild(row)
         row.textContent = content.body
+        return container.appendChild(row)
     }
-    if (type === '2col') {
+    if (layout == '2col') {
         let container = document.createElement('div')
         container.className = 'container d-flex'
         wrapper.appendChild(container)
         let left = document.createElement('div')
         left.className = 'col2'
+        left.innerHTML = `<div class='row'>${content.left.body}</div>`
         container.appendChild(left)
-        left.textContent = content.left.body
         let right = document.createElement('div')
         right.className = 'col2'
-        container.appendChild(right)
-        right.textContent = content.right.body
+        right.innerHTML = `<div class='row'>${content.right.body}</div>`
+        return container.appendChild(right)
     }
-    // console.log('addContent ran')
 }
+
 const render = pageToDisplay => {
     clearPage()
     let targetPage = pages.filter(item => item.page === pageToDisplay)
-    buildLayout(targetPage[0].layout)
-    addContent(targetPage[0].type, targetPage[0].content)
-    // console.log('render ran')
+    buildLayout(targetPage[0])
+    addContent(targetPage[0].layout, targetPage[0].content)
 }
-// end dom manipulation
 
-// attach listeners
-const actionListeners = () => {
-    let renderedMenuItems = Array.from(document.querySelector('#navigation').children)
-    renderedMenuItems.forEach(item => {
-        item.addEventListener('click', e => {
-            Array.from(e.target.parentElement.children).forEach(i => {
-                if (i.classList.contains('active')) i.classList.remove('active')
-            })
-            e.target.classList.add('active')
-            let actionsParent = pages.filter(item => item.menuitems.title === e.target.textContent)
-            let actionsToDisplay = actionsParent[0].menuitems.actions ? actionsParent[0].menuitems.actions : '<p></p>'
-            if (Array.isArray(actionsToDisplay)) {
-                let outputActions = actionsToDisplay.map(item => `<a href="#">${item[0]}</a>`)
-                document.querySelector('#actions').innerHTML = ''.concat(...outputActions)
-            } else {
-                document.querySelector('#actions').innerHTML = actionsToDisplay
-            }
-        })
-    })
-}
-// end attach listeners
-
-// init page
 render('inventar')
-actionListeners()
