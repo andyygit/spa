@@ -2,6 +2,8 @@ $ff-base: sans-serif;
 $fs-root: 62.5%;
 $fs-base: 1.6rem;
 
+$headings-margin-bottom: 1rem / 2;
+
 $col-main-black: #303030;
 $col-main-yellow: #ffb80c;
 $col-main-bg: #dfe5e5;
@@ -34,13 +36,14 @@ body {
     background-color: $col-main-bg;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: $headings-margin-bottom;
+}
+
 a {
     text-decoration: none;
     color: inherit;
-}
-
-.d-flex {
-    display: flex;
 }
 
 .col2 {
@@ -48,14 +51,17 @@ a {
 }
 
 .container {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 80%;
     margin: 0 auto;
     padding: 5px;
     .row {
         width: 100%;
-        // border-bottom: solid thin lighten($col-main-black, 31%);
+        border-bottom: solid thin lighten($col-main-black, 31%);
         padding: 5px;
         margin: 0 -5px;
+        font-size: 1.4rem;
     }
 }
 
@@ -89,6 +95,7 @@ a {
     @extend %navbarTpl;
     background-color: $col-main-black;
     color: $col-white;
+    margin-bottom: 10px;
     a, p {
         padding: 5px 10px;
     }
@@ -100,5 +107,24 @@ a {
             font-style: italic;
             color: $col-main-yellow;
         }
+    }
+}
+
+dw-card {min-width: 25%;}
+
+.card {
+    margin: 8px;
+    background-color: $col-white;
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,.4);
+    font-size: 1.4rem;
+    .card-title {
+        display: flex;
+        align-items: center;
+        background-color: lighten($col-main-black, 12%);
+        color: #fff;
+        padding: 8px;
+    }
+    .card-body {
+        padding: 8px;
     }
 }

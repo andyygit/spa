@@ -1,12 +1,17 @@
 const pages = [
     {
         page: 'dashboard',
-        layout: '1col',
+        layout: '2col',
         menuitems: {
             title: 'Dashboard',
         },
         content: {
-            body: '1 column page dashboard'
+            left: {
+                body: () => 'Left page dashboard'
+            },
+            right: {
+                body: () => 'Right page dashboard'
+            }
         }
     },
     {
@@ -29,10 +34,10 @@ const pages = [
         },
         content: {
             left: {
-                body: 'Left page inventar'
+                body: () => 'Left page inventar'
             },
             right: {
-                body: 'Right page inventar'
+                body: () => 'Right page inventar'
             }
         }
     },
