@@ -26,7 +26,7 @@ const buildLayout = page => {
     return app.appendChild(wrapper)
 }
 
-const addContent = (layout, content) => {
+const addContent = async (layout, content) => {
     let wrapper = document.querySelector('.wrapper')
     if (layout == '1col') {
         let container = document.createElement('div')
@@ -46,12 +46,12 @@ const addContent = (layout, content) => {
         wrapper.appendChild(container)
         let left = document.createElement('div')
         left.className = 'col2'
-        left.innerHTML = `<div class='row'>${content.left.body()}</div>`
-        container.appendChild(left)
         let right = document.createElement('div')
         right.className = 'col2'
-        right.innerHTML = `<div class='row'>${content.right.body()}</div>`
-        return container.appendChild(right)
+        container.appendChild(left)
+        container.appendChild(right)
+        left.innerHTML = await content.left.body()
+        right.innerHTML = await content.right.body()
     }
 }
 

@@ -7,7 +7,17 @@ const pages = [
         },
         content: {
             left: {
-                body: () => 'Left page dashboard'
+                body: async () => {
+                    try {
+                        let response = await fetch('assets/static/scanner.json')
+                        let content = await response.json()
+                        let output = Array.from(content).map(item => `<div class="row d-flex"><div>${item.id}</div><div>${item.sn}</div><div>${item.assnr}</div><div>${item.tip}</div><div>${item.dach}</div><div>${item.dpr}</div><div>${item.depozit}</div><div>${item.subcontractor}</div><div>${item.tura}</div><div>${item.service}</div></div>`)
+                        return ''.concat(...output)
+                    } catch (e) {
+                        console.log("Eroare!")
+                        console.log(e)
+                    }
+                }
             },
             right: {
                 body: () => 'Right page dashboard'

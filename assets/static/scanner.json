@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "sn": "170344068D",
+        "assnr": "653002583",
+        "tip": "CT60",
+        "dach": "2021-01-15",
+        "dpr": "2021-01-15",
+        "depozit": "D13",
+        "subcontractor": "Tefcoro",
+        "tura": 13205,
+        "service": false
+    },
+    {
+        "id": 2,
+        "sn": "17035406B3",
+        "assnr": "653000826",
+        "tip": "CT60",
+        "dach": "2021-01-15",
+        "dpr": "2021-01-15",
+        "depozit": "D13",
+        "subcontractor": "Tefcoro",
+        "tura": 13210,
+        "service": false
+    },
+    {
+        "id": 3,
+        "sn": "170114087C",
+        "assnr": "653001723",
+        "tip": "CT60",
+        "dach": "2021-01-15",
+        "dpr": "2021-01-15",
+        "depozit": "D13",
+        "subcontractor": "Tefcoro",
+        "tura": 13226,
+        "service": false
+    }
+]
