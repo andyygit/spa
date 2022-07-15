@@ -1,8 +1,10 @@
+@use 'sass:math';
+
 $ff-base: sans-serif;
 $fs-root: 62.5%;
 $fs-base: 1.6rem;
 
-$headings-margin-bottom: 1rem / 2;
+$headings-margin-bottom: math.div(1rem, 2);
 
 $col-main-black: #303030;
 $col-main-yellow: #ffb80c;

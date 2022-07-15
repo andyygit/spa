@@ -1,4 +1,4 @@
-import { pages } from "./pages.js"
+import { pages } from './pages.js'
 
 class Navbar extends HTMLElement {
   constructor() {
@@ -7,16 +7,16 @@ class Navbar extends HTMLElement {
   }
   getMenuItems() {
     return this.pages.map(
-      (item) =>
+      item =>
         `<a href="#" data-target="${item.page}" ${
-          this.getAttribute("activelink") == item.menuitems.title
+          this.getAttribute('activelink') == item.menuitems.title
             ? "class='active'"
-            : ""
+            : ''
         }>${item.menuitems.title}</a>`
     )
   }
   generateMenu() {
-    return "".concat(...this.getMenuItems())
+    return ''.concat(...this.getMenuItems())
   }
   clickHandler(event) {
     this.render(event.target.dataset.target)
@@ -29,10 +29,10 @@ class Navbar extends HTMLElement {
       </div>
     </div>
     `
-    this.addEventListener("click", this.clickHandler)
+    this.addEventListener('click', this.clickHandler)
   }
   disconnectedCallback() {
-    this.removeEventListener("click", this.clickHandler)
+    this.removeEventListener('click', this.clickHandler)
     // console.log('click handler on menu removed')
   }
 }
@@ -41,21 +41,21 @@ class Actionbar extends HTMLElement {
   constructor() {
     super()
     this.pages = pages
-    this.activeLink = document.querySelector("#navigation .active").textContent
+    this.activeLink = document.querySelector('#navigation .active').textContent
   }
   getActionItems() {
     let page = this.pages.filter(
-      (item) => item.menuitems.title == this.activeLink
+      item => item.menuitems.title == this.activeLink
     )
     if (page[0].menuitems.actions) {
       return page[0].menuitems.actions.map(
-        (item) => `<a href="#" data-target="${item[1]}">${item[0]}</a>`
+        item => `<a href="#" data-target="${item[1]}">${item[0]}</a>`
       )
     }
-    return "<p></p>"
+    return '<p></p>'
   }
   generateActions() {
-    return "".concat(...this.getActionItems())
+    return ''.concat(...this.getActionItems())
   }
   clickHandler(event) {
     this.render(event.target.dataset.target)
@@ -68,10 +68,10 @@ class Actionbar extends HTMLElement {
       </div>
     </div>
     `
-    this.addEventListener("click", this.clickHandler)
+    this.addEventListener('click', this.clickHandler)
   }
   disconnectedCallback() {
-    this.removeEventListener("click", this.clickHandler)
+    this.removeEventListener('click', this.clickHandler)
     // console.log('click handler on action removed')
   }
 }
@@ -93,7 +93,7 @@ class Card extends HTMLElement {
     `
   }
   disconnectedCallback() {
-    console.log("card removed")
+    console.log('card removed')
   }
 }
 
